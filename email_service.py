@@ -1,9 +1,3 @@
-
-Edite o email_service.py de novo:
-Abra email_service.py no GitHub
-Edit (lápis)
-Apague TUDO
-Cole este código SIMPLES:
 import os
 import smtplib
 from email.mime.text import MIMEText
