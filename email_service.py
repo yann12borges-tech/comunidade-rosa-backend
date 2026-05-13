@@ -1,3 +1,10 @@
+Vou te passar uma versão SUPER SIMPLES do email_service.py sem nenhum caractere especial:
+
+Edite o email_service.py de novo:
+Abra email_service.py no GitHub
+Edit (lápis)
+Apague TUDO
+Cole este código SIMPLES:
 import os
 import smtplib
 from email.mime.text import MIMEText
@@ -16,39 +23,26 @@ async def send_email_notification(nome: str, telefone: str, email: str):
         email_to = os.environ.get('EMAIL_TO', '').split(',')
         
         if not all([smtp_username, smtp_password, email_from, email_to]):
-            logger.warning("Email configuration incomplete")
-            return {'success': False, 'error': 'Email configuration incomplete'}
+            logger.warning("Email config incomplete")
+            return {'success': False, 'error': 'Config incomplete'}
         
         message = MIMEMultipart()
         message['From'] = email_from
         message['To'] = ', '.join(email_to)
-        message['Subject'] = 'Novo Benfeitor Cadastrado - Comunidade Rosa Mistica'
+        message['Subject'] = 'Novo Benfeitor Cadastrado'
         
-        body = f"""
-        <html>
-        <body>
-            <h2>Novo Benfeitor Cadastrado!</h2>
-            <p>Um novo benfeitor se cadastrou no site:</p>
-            <ul>
-                <li><strong>Nome:</strong> {nome}</li>
-                <li><strong>Telefone:</strong> {telefone}</li>
-                <li><strong>Email:</strong> {email}</li>
-            </ul>
-            <p>Entre em contato para agradecer e confirmar a doacao.</p>
-        </body>
-        </html>
-        """
+        body = "Novo benfeitor: " + nome + " - Telefone: " + telefone + " - Email: " + email
         
-        message.attach(MIMEText(body, 'html'))
+        message.attach(MIMEText(body, 'plain'))
         
         with smtplib.SMTP(smtp_server, smtp_port) as server:
             server.starttls()
             server.login(smtp_username, smtp_password)
             server.send_message(message)
         
-        logger.info(f"Email sent to {email_to}")
+        logger.info("Email sent")
         return {'success': True, 'recipients': email_to}
         
     except Exception as e:
-        logger.error(f"Failed to send email: {str(e)}")
+        logger.error("Email failed: " + str(e))
         return {'success': False, 'error': str(e)}
