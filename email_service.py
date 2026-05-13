@@ -1,4 +1,3 @@
-Vou te passar uma versão SUPER SIMPLES do email_service.py sem nenhum caractere especial:
 
 Edite o email_service.py de novo:
 Abra email_service.py no GitHub
