@@ -1,7 +1,3 @@
-📋 PASSO 1 — Atualizar 3 arquivos no GitHub (backend)
-Acessa: 🔗 https://github.com/yann12borges-tech/comunidade-rosa-backend
-
-Arquivo 1: models.py → editar e substituir TUDO por:
 from pydantic import BaseModel
 from datetime import datetime
 
