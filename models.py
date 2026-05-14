@@ -12,3 +12,8 @@ class Benfeitor(BaseModel):
     email: str
     created_at: datetime
     notified: bool = False
+
+class ContatoCreate(BaseModel):
+    name: str
+    email: str
+    message: str
