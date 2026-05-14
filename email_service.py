@@ -1,11 +1,13 @@
-fastapi==0.110.1
-uvicorn==0.25.0
-motor==3.6.0
-pymongo==4.9.0
-pydantic==2.12.5
-python-dotenv==1.2.2
-resend>=2.0.0
-Arquivo 2: email_service.py → editar e substituir TODO o conteúdo por:
+Você copiou e colou no GitHub junto com o título "Arquivo 2: email_service.py → editar e substituir TODO o conteúdo por:" que era a minha instrução — não fazia parte do código.
+
+E também vejo que ele ainda está rodando Python 3.14 (/opt/render/project/python/Python-3.14.3/), o que significa que o runtime.txt não chegou no repositório.
+
+🔧 Vamos arrumar 2 coisas:
+1️⃣ Limpar o email_service.py no GitHub
+Vai em: 🔗 https://github.com/yann12borges-tech/comunidade-rosa-backend/blob/main/email_service.py
+
+Clica no lápis ✏️, apaga TUDO que está lá, e cola EXATAMENTE isso (copia daqui sem mexer):
+
 import os
 import asyncio
 import logging
@@ -21,7 +23,7 @@ async def send_email_notification(nome: str, telefone: str, email: str):
         email_to_raw = os.environ.get('EMAIL_TO', '')
 
         if not resend_api_key or not email_to_raw:
-            logger.warning("Email config incomplete (RESEND_API_KEY or EMAIL_TO missing)")
+            logger.warning("Email config incomplete")
             return {'success': False, 'error': 'Config incomplete'}
 
         email_to = [e.strip() for e in email_to_raw.split(',') if e.strip()]
